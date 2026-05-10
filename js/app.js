@@ -188,6 +188,7 @@ const App = (() => {
         // Attach button event listeners
         const saveBtn = document.getElementById('saveBtn');
         const clearBtn = document.getElementById('clearBtn');
+        const downloadChartBtn = document.getElementById('downloadChartBtn');
 
         if (saveBtn) {
             saveBtn.addEventListener('click', handleSave);
@@ -195,6 +196,13 @@ const App = (() => {
 
         if (clearBtn) {
             clearBtn.addEventListener('click', handleClear);
+        }
+
+        if (downloadChartBtn) {
+            downloadChartBtn.addEventListener('click', () => {
+                ChartManager.downloadChart();
+                showFeedbackMessage('📊 Chart downloaded successfully!', 'success', 2000);
+            });
         }
 
         // Handle tab switching

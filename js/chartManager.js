@@ -191,11 +191,27 @@ const ChartManager = (() => {
         return chart;
     };
 
+    /**
+     * Download chart as PNG image
+     */
+    const downloadChart = () => {
+        if (!chart) {
+            console.warn('Chart not initialized');
+            return;
+        }
+
+        const link = document.createElement('a');
+        link.href = chart.toBase64Image();
+        link.download = `bucks2bar-chart-${new Date().toISOString().split('T')[0]}.png`;
+        link.click();
+    };
+
     // Public API
     return {
         initChart,
         updateChart,
         destroyChart,
-        getChart
+        getChart,
+        downloadChart
     };
 })();
